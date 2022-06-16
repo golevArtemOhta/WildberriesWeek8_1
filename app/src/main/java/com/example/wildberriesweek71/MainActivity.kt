@@ -2,6 +2,7 @@ package com.example.wildberriesweek71
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import com.example.wildberriesweek71.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -12,14 +13,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         if (savedInstanceState == null) {
-            openFragment()
+            openFragment(DotaHeroesFragment.newInstance())
+        }
+
+        binding.imageButtonInfo.setOnClickListener {
+            openFragment(InfoFragment.newInstance())
         }
     }
 
-    private fun openFragment() {
+    private fun openFragment(fragment: Fragment) {
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.fragment, DotaHeroesFragment.newInstance())
+            .replace(R.id.fragment, fragment)
+            .addToBackStack("stack")
             .commit()
     }
 }
