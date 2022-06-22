@@ -28,26 +28,27 @@ class DotaHeroFullInfoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val bundle = this.arguments
-        val name = bundle?.getString("name")
-        val image = bundle?.getString("image")
-        val attackRange = bundle?.getString("attackRange")
-        val attackRate = bundle?.getString("attackRate")
-        val baseHealth = bundle?.getString("BaseHealth")
-        val baseHealthRegen = bundle?.getString("BaseHealthRegen")
-        val baseMana = bundle?.getString("BaseMana")
-        val baseManaRegen = bundle?.getString("BaseManaRegen")
-        val moveSpeed = bundle?.getString("MoveSpeed")
+        val dotaHero = bundle?.getParcelable<DotaHeroesJSON>("dotaHero")
+//        val name = bundle?.getString("name")
+//        val image = bundle?.getString("image")
+//        val attackRange = bundle?.getString("attackRange")
+//        val attackRate = bundle?.getString("attackRate")
+//        val baseHealth = bundle?.getString("BaseHealth")
+//        val baseHealthRegen = bundle?.getString("BaseHealthRegen")
+//        val baseMana = bundle?.getString("BaseMana")
+//        val baseManaRegen = bundle?.getString("BaseManaRegen")
+//        val moveSpeed = bundle?.getString("MoveSpeed")
 
         with(binding){
-            tvNameSecondFragment.text = name
-            tvAttackRange.text = "Attack Range: $attackRange"
-            tvAttackRate.text = "Attack Rate: $attackRate"
-            tvBaseHealth.text = "Base Health: $baseHealth"
-            tvBaseHealthRegen.text = "Base Health Regen: $baseHealthRegen"
-            tvBaseMana.text = "Base Mana: $baseMana"
-            tvBaseManaRegen.text = "Base Mana Regenbase: $baseManaRegen"
-            tvMoveSpeed.text = "Move Speed: $moveSpeed"
-            imageView.load("https://api.opendota.com${image}")
+            tvNameSecondFragment.text = dotaHero?.name
+            tvAttackRange.text = "Attack Range: ${dotaHero?.attack_range}"
+            tvAttackRate.text = "Attack Rate: ${dotaHero?.attack_rate}"
+            tvBaseHealth.text = "Base Health: ${dotaHero?.base_health}"
+            tvBaseHealthRegen.text = "Base Health Regen: ${dotaHero?.base_health_regen}"
+            tvBaseMana.text = "Base Mana: ${dotaHero?.base_mana}"
+            tvBaseManaRegen.text = "Base Mana Regenbase: ${dotaHero?.base_mana_regen}"
+            tvMoveSpeed.text = "Move Speed: ${dotaHero?.move_speed}"
+            imageView.load("https://api.opendota.com${dotaHero?.img}")
         }
     }
 
