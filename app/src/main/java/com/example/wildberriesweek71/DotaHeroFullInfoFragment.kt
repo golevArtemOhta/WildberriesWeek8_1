@@ -29,15 +29,6 @@ class DotaHeroFullInfoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val bundle = this.arguments
         val dotaHero = bundle?.getParcelable<DotaHeroesJSON>("dotaHero")
-//        val name = bundle?.getString("name")
-//        val image = bundle?.getString("image")
-//        val attackRange = bundle?.getString("attackRange")
-//        val attackRate = bundle?.getString("attackRate")
-//        val baseHealth = bundle?.getString("BaseHealth")
-//        val baseHealthRegen = bundle?.getString("BaseHealthRegen")
-//        val baseMana = bundle?.getString("BaseMana")
-//        val baseManaRegen = bundle?.getString("BaseManaRegen")
-//        val moveSpeed = bundle?.getString("MoveSpeed")
 
         with(binding){
             tvNameSecondFragment.text = dotaHero?.name
